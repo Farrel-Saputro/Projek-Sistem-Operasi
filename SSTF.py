@@ -8,6 +8,9 @@
 
 # Program implementasi algoritma SSTF (Shortest Seek Time First)
 
+# UNTUK CARA PENGGUNAAN PROGRAM INI, HANYA TINGGAL DI RUN
+
+
 # Menghitung perbedaan masing-masing posisi kepala
 def calculateDifference(queue, head, diff):
 	for i in range(len(diff)):
@@ -63,7 +66,10 @@ def shortestSeekTimeFirst(request, head):
 					print(seek_sequence[i], end =" ")
 	
 
-#output
+# Output
 if __name__ =="__main__":
 	proc = [176, 79, 34, 60, 92, 11, 41, 114]
 	shortestSeekTimeFirst(proc, 50)
+
+	# variabel proc adalah daftar sequence
+	# parameter kedua pada fungsi shortestSeekTimeFirst adalah head start position
