@@ -8,14 +8,12 @@
 
 # Program implementasi algoritma SSTF (Shortest Seek Time First)
 
-# Calculates difference of each
-# track number with the head position
+# Menghitung perbedaan masing-masing posisi kepala
 def calculateDifference(queue, head, diff):
 	for i in range(len(diff)):
 		diff[i][0] = abs(queue[i] - head)
 	
-# find unaccessed track which is
-# at minimum distance from head
+# temukan trek yang belum diakses pada jarak minimum dari kepala
 def findMin(diff):
 	index = -1
 	minimum = 999999999
@@ -32,15 +30,14 @@ def shortestSeekTimeFirst(request, head):
 		l = len(request)
 		diff = [0] * l
 		
-		# initialize array
+		# menginisialisasi array
 		for i in range(l):
 			diff[i] = [0, 0]
 		
-		# count total number of seek operation	
+		# hitung jumlah total operasi seek	
 		seek_count = 0
 		
-		# stores sequence in which disk
-		# access is done
+		# menyimpan urutan dimana akses disk dilakukan
 		seek_sequence = [0] * (l + 1)
 		
 		for i in range(l):
@@ -48,20 +45,15 @@ def shortestSeekTimeFirst(request, head):
 			calculateDifference(request, head, diff)
 			index = findMin(diff)
 			diff[index][1] = True
-
-			# increase the total count
 			seek_count += diff[index][0]
-			
-			# accessed track is now new head
 			head = request[index]
 	
-		# for last accessed track
+		# untuk trek yang terakhir diakses
 		seek_sequence[len(seek_sequence) - 1] = head
-		# print("Total number of seek operations =", seek_count)	
-		print(f"Total head movement = {seek_count} cylinders")	
-		print("Head starts at ", seek_sequence[0])
+		print("Total head movement =", seek_count,"cylinders")	
+		print("Head starts at", seek_sequence[0])
 		
-		# print the sequence
+		# print urutannya
 		print("Queue = ", end = " ")
 		for i in range(l + 1):
 			if i != 0:
@@ -69,10 +61,9 @@ def shortestSeekTimeFirst(request, head):
 					print(seek_sequence[i], end =", ")
 				else:
 					print(seek_sequence[i], end =" ")
-# Driver code
+	
+
+#output
 if __name__ =="__main__":
-	# request array
 	proc = [176, 79, 34, 60, 92, 11, 41, 114]
 	shortestSeekTimeFirst(proc, 50)
-	
-#`wkwkkw
